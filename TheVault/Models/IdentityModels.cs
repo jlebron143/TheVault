@@ -18,6 +18,12 @@ namespace TheVault.Models
         }
     }
 
+    public class ApplicationRole : IdentityRole
+    {
+        public ApplicationRole() : base() { }
+        public ApplicationRole(string roleName): base(roleName) { }
+    }
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
@@ -29,5 +35,17 @@ namespace TheVault.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<TheVault.Models.ShoeBrand> ShoeBrands { get; set; }
+
+        public System.Data.Entity.DbSet<TheVault.Models.Size> Sizes { get; set; }
+
+        public System.Data.Entity.DbSet<TheVault.Models.Visitor> Visitors { get; set; }
+
+        public System.Data.Entity.DbSet<TheVault.Models.Post> Posts { get; set; }
+
+        public System.Data.Entity.DbSet<TheVault.Models.Comment> Comments { get; set; }
+
+        public System.Data.Entity.DbSet<TheVault.Models.RoleViewModel> RoleViewModels { get; set; }
     }
 }
