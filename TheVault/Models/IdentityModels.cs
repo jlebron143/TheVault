@@ -43,5 +43,7 @@ namespace TheVault.Models
         public System.Data.Entity.DbSet<TheVault.Models.Item> Items { get; set; }
 
         public System.Data.Entity.DbSet<TheVault.Models.Category> Categories { get; set; }
+        // public System.Data.Entity.DbSet<TheCategory> Producers { get; set; }
+
     }
 }

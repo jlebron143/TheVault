@@ -10,6 +10,6 @@ namespace TheVault.Models
     {
         public DbSet<Item> Items { get; set; }
         public DbSet<Category> Categories { get;  set;}
-        public DbSet<Category> Producers { get; set; }
+        public DbSet<Producer> Producers { get; set; }
     }
 }
