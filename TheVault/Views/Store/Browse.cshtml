@@ -1,0 +1,16 @@
+﻿@model IEnumerable<TheVault.Models.Item>
+
+@{
+    ViewBag.Title = "Browse";
+}
+
+@*<h2>Browsing Catagory:@Model.Title</h2>*@
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            @Html.ActionLink(item.Title, "Details", new { id = item.ItemId })
+        </li>
+    }
+</ul>
+

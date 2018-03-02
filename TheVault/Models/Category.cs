@@ -6,12 +6,12 @@ using System.Web;
 
 namespace TheVault.Models
 {
-    public class Size
+    public partial class Category
     {
         [Key]
-        [Display(Name = "Sizes")]
-        public int SizeID { get; set; }
-        [Display(Name = "Sizes") ]
-        public string Sizes { get; set; }
+        public int CategoryID { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        
     }
 }

@@ -215,46 +215,34 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Configuration\PaymentSettings.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PostsController.cs" />
-    <Compile Include="Controllers\ShoeBrandsController.cs" />
-    <Compile Include="Controllers\SizesController.cs" />
+    <Compile Include="Controllers\StoreController.cs" />
+    <Compile Include="Controllers\StoreManagerController.cs" />
     <Compile Include="Controllers\VisitorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201802221406243_initial table migration.cs" />
-    <Compile Include="Migrations\201802221406243_initial table migration.Designer.cs">
-      <DependentUpon>201802221406243_initial table migration.cs</DependentUpon>
+    <Compile Include="Migrations\201803012318393_initial migration.cs" />
+    <Compile Include="Migrations\201803012318393_initial migration.Designer.cs">
+      <DependentUpon>201803012318393_initial migration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201802221411235_Post table.cs" />
-    <Compile Include="Migrations\201802221411235_Post table.Designer.cs">
-      <DependentUpon>201802221411235_Post table.cs</DependentUpon>
+    <Compile Include="Migrations\201803020004285_producer.cs" />
+    <Compile Include="Migrations\201803020004285_producer.Designer.cs">
+      <DependentUpon>201803020004285_producer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201802281758051_dotnet new mvc.cs" />
-    <Compile Include="Migrations\201802281758051_dotnet new mvc.Designer.cs">
-      <DependentUpon>201802281758051_dotnet new mvc.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803010021040_update-database.cs" />
-    <Compile Include="Migrations\201803010021040_update-database.Designer.cs">
-      <DependentUpon>201803010021040_update-database.cs</DependentUpon>
+    <Compile Include="Migrations\201803020217065_update-database.cs" />
+    <Compile Include="Migrations\201803020217065_update-database.Designer.cs">
+      <DependentUpon>201803020217065_update-database.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\CartIndexViewModel.cs" />
-    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\InventoryFilter.cs" />
+    <Compile Include="Models\Item.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="ViewModel\MenuViewModel.cs" />
-    <Compile Include="Models\PageLayoutInfo.cs" />
-    <Compile Include="Models\Post.cs" />
-    <Compile Include="ViewModel\PostCommentViewModel.cs" />
-    <Compile Include="ViewModel\RoleViewModel.cs" />
-    <Compile Include="Models\ShoeBrand.cs" />
-    <Compile Include="Models\Size.cs" />
+    <Compile Include="Models\Producer.cs" />
+    <Compile Include="Models\TheVaultEntities.cs" />
     <Compile Include="Models\Visitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -263,7 +251,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
-    <Content Include="Migrations\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
@@ -351,30 +338,32 @@
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
     <Content Include="Views\Home\Charge.cshtml" />
+    <Content Include="Views\Store\Details.cshtml" />
+    <Content Include="Views\Store\Browse.cshtml" />
+    <Content Include="Views\Store\Index.cshtml" />
+    <Content Include="Views\StoreManager\Create.cshtml" />
+    <Content Include="Views\StoreManager\Delete.cshtml" />
+    <Content Include="Views\StoreManager\Details.cshtml" />
+    <Content Include="Views\StoreManager\Edit.cshtml" />
+    <Content Include="Views\StoreManager\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Migrations\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Migrations\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Migrations\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201802221406243_initial table migration.resx">
-      <DependentUpon>201802221406243_initial table migration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803012318393_initial migration.resx">
+      <DependentUpon>201803012318393_initial migration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802221411235_Post table.resx">
-      <DependentUpon>201802221411235_Post table.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803020004285_producer.resx">
+      <DependentUpon>201803020004285_producer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802281758051_dotnet new mvc.resx">
-      <DependentUpon>201802281758051_dotnet new mvc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803010021040_update-database.resx">
-      <DependentUpon>201803010021040_update-database.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803020217065_update-database.resx">
+      <DependentUpon>201803020217065_update-database.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

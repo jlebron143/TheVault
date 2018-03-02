@@ -36,16 +36,12 @@ namespace TheVault.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<TheVault.Models.ShoeBrand> ShoeBrands { get; set; }
-
-        public System.Data.Entity.DbSet<TheVault.Models.Size> Sizes { get; set; }
-
+      
         public System.Data.Entity.DbSet<TheVault.Models.Visitor> Visitors { get; set; }
 
-        public System.Data.Entity.DbSet<TheVault.Models.Post> Posts { get; set; }
+     
+        public System.Data.Entity.DbSet<TheVault.Models.Item> Items { get; set; }
 
-        public System.Data.Entity.DbSet<TheVault.Models.Comment> Comments { get; set; }
-
-        public System.Data.Entity.DbSet<TheVault.Models.RoleViewModel> RoleViewModels { get; set; }
+        public System.Data.Entity.DbSet<TheVault.Models.Category> Categories { get; set; }
     }
 }

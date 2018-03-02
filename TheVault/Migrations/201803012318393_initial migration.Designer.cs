@@ -7,13 +7,13 @@ namespace TheVault.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class initialtablemigration : IMigrationMetadata
+    public sealed partial class initialmigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initialtablemigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initialmigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201802221406243_initial table migration"; }
+            get { return "201803012318393_initial migration"; }
         }
         
         string IMigrationMetadata.Source

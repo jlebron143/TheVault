@@ -7,13 +7,13 @@ namespace TheVault.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Posttable : IMigrationMetadata
+    public sealed partial class producer : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Posttable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(producer));
         
         string IMigrationMetadata.Id
         {
-            get { return "201802221411235_Post table"; }
+            get { return "201803020004285_producer"; }
         }
         
         string IMigrationMetadata.Source

@@ -10,116 +10,112 @@ using TheVault.Models;
 
 namespace TheVault.Controllers
 {
-    public class PostsController : Controller
+    public class StoreManagerController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private TheVaultEntities db = new TheVaultEntities();
 
-        // GET: Posts
+        // GET: StoreManager
         public ActionResult Index()
         {
-            var posts = db.Posts.Include(p => p.ShoeBrand).Include(p => p.Size);
-            return View(posts.ToList());
+            var items = db.Items.Include(i => i.Category).Include(i => i.Producer);
+            return View(items.ToList());
         }
 
-        // GET: Posts/Details/5
+        // GET: StoreManager/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Posts.Find(id);
-            if (post == null)
+            Item item = db.Items.Find(id);
+            if (item == null)
             {
                 return HttpNotFound();
             }
-            return View(post);
+            return View(item);
         }
 
-        // GET: Posts/Create
+        // GET: StoreManager/Create
         public ActionResult Create()
         {
-            ViewBag.ShoeBrandID = new SelectList(db.ShoeBrands, "ShoeBrandID", "Brands");
-            ViewBag.SizeId = new SelectList(db.Sizes, "SizeID", "Sizes");
+            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryID", "Name");
             return View();
         }
 
-        // POST: Posts/Create
+        // POST: StoreManager/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PostId,PostDate,Title,Message,Image,New,Used,UserID,ShoeBrandID,SizeId")] Post post)
+        public ActionResult Create([Bind(Include = "ItemId,CategoryId,Title,Price,ItemArtUrl")] Item item)
         {
             if (ModelState.IsValid)
             {
-                db.Posts.Add(post);
+                db.Items.Add(item);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ShoeBrandID = new SelectList(db.ShoeBrands, "ShoeBrandID", "Brands", post.ShoeBrandID);
-            ViewBag.SizeId = new SelectList(db.Sizes, "SizeID", "Sizes", post.SizeId);
-            return View(post);
+            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryID", "Name", item.CategoryId);
+            return View(item);
         }
 
-        // GET: Posts/Edit/5
+        // GET: StoreManager/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Posts.Find(id);
-            if (post == null)
+            Item item = db.Items.Find(id);
+            if (item == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ShoeBrandID = new SelectList(db.ShoeBrands, "ShoeBrandID", "Brands", post.ShoeBrandID);
-            ViewBag.SizeId = new SelectList(db.Sizes, "SizeID", "Sizes", post.SizeId);
-            return View(post);
+            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryID", "Name", item.CategoryId);
+            return View(item);
         }
 
-        // POST: Posts/Edit/5
+        // POST: StoreManager/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PostId,PostDate,Title,Message,Image,New,Used,UserID,ShoeBrandID,SizeId")] Post post)
+        public ActionResult Edit([Bind(Include = "ItemId,CategoryId,Title,Price,ItemArtUrl")] Item item)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(post).State = EntityState.Modified;
+                db.Entry(item).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ShoeBrandID = new SelectList(db.ShoeBrands, "ShoeBrandID", "Brands", post.ShoeBrandID);
-            ViewBag.SizeId = new SelectList(db.Sizes, "SizeID", "Sizes", post.SizeId);
-            return View(post);
+            ViewBag.CategoryId = new SelectList(db.Categories, "CategoryID", "Name", item.CategoryId);
+            return View(item);
         }
 
-        // GET: Posts/Delete/5
+        // GET: StoreManager/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Posts.Find(id);
-            if (post == null)
+            Item item = db.Items.Find(id);
+            if (item == null)
             {
                 return HttpNotFound();
             }
-            return View(post);
+            return View(item);
         }
 
-        // POST: Posts/Delete/5
+        // POST: StoreManager/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Post post = db.Posts.Find(id);
-            db.Posts.Remove(post);
+            Item item = db.Items.Find(id);
+            db.Items.Remove(item);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

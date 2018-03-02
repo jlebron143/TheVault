@@ -3,16 +3,53 @@ namespace TheVault.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initialtablemigration : DbMigration
+    public partial class initialmigration : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Categories",
+                c => new
+                    {
+                        CategoryID = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Description = c.String(),
+                    })
+                .PrimaryKey(t => t.CategoryID);
+            
+            CreateTable(
+                "dbo.Items",
+                c => new
+                    {
+                        ItemId = c.Int(nullable: false, identity: true),
+                        CategoryId = c.Int(nullable: false),
+                        Title = c.String(),
+                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        ItemArtUrl = c.String(),
+                        Producer_ProducerID = c.Int(),
+                    })
+                .PrimaryKey(t => t.ItemId)
+                .ForeignKey("dbo.Categories", t => t.CategoryId, cascadeDelete: true)
+                .ForeignKey("dbo.Producers", t => t.Producer_ProducerID)
+                .Index(t => t.CategoryId)
+                .Index(t => t.Producer_ProducerID);
+            
+            CreateTable(
+                "dbo.Producers",
+                c => new
+                    {
+                        ProducerID = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                    })
+                .PrimaryKey(t => t.ProducerID);
+            
             CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
                         Name = c.String(nullable: false, maxLength: 256),
+                        Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
@@ -29,24 +66,6 @@ namespace TheVault.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
-            
-            CreateTable(
-                "dbo.ShoeBrands",
-                c => new
-                    {
-                        ShoeBrandID = c.Int(nullable: false, identity: true),
-                        Brands = c.String(),
-                    })
-                .PrimaryKey(t => t.ShoeBrandID);
-            
-            CreateTable(
-                "dbo.Sizes",
-                c => new
-                    {
-                        SizeID = c.Int(nullable: false, identity: true),
-                        Sizes = c.String(),
-                    })
-                .PrimaryKey(t => t.SizeID);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -111,20 +130,25 @@ namespace TheVault.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Items", "Producer_ProducerID", "dbo.Producers");
+            DropForeignKey("dbo.Items", "CategoryId", "dbo.Categories");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Items", new[] { "Producer_ProducerID" });
+            DropIndex("dbo.Items", new[] { "CategoryId" });
             DropTable("dbo.Visitors");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.Sizes");
-            DropTable("dbo.ShoeBrands");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Producers");
+            DropTable("dbo.Items");
+            DropTable("dbo.Categories");
         }
     }
 }

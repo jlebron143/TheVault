@@ -7,13 +7,13 @@ namespace TheVault.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class dotnetnewmvc : IMigrationMetadata
+    public sealed partial class updatedatabase : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(dotnetnewmvc));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(updatedatabase));
         
         string IMigrationMetadata.Id
         {
-            get { return "201802281758051_dotnet new mvc"; }
+            get { return "201803020217065_update-database"; }
         }
         
         string IMigrationMetadata.Source

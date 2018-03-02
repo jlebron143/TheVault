@@ -6,11 +6,10 @@ using System.Web;
 
 namespace TheVault.Models
 {
-    public class ShoeBrand
+    public class Producer
     {
         [Key]
-        public int ShoeBrandID { get; set; }
-        [Display(Name = "Shoe Brand")]
-        public string Brands { get; set; }
+        public int ProducerID { get; set; }
+        public string Name { get; set; }
     }
 }
