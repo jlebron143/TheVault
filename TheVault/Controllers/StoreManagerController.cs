@@ -12,12 +12,12 @@ namespace TheVault.Controllers
 {
     public class StoreManagerController : Controller
     {
-        private TheVaultEntities db = new TheVaultEntities();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: StoreManager
         public ActionResult Index()
         {
-            var items = db.Items.Include(i => i.Category).Include(i => i.Producer);
+            var items = db.Items.Include(i => i.Category).Include(i => i.Producer).ToList();
             return View(items.ToList());
         }
 
