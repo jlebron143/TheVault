@@ -16,7 +16,7 @@ namespace TheVault.Models
         public string UserID { get; set; }
         public System.DateTime DateCreated { get; set; }
         public virtual IEnumerable<Item> Items { get; set;  }
-        public object Itemid { get; internal set; }
+       
        
 
     }

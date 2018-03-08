@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -21,8 +22,16 @@ namespace TheVault.Controllers
         {
             return View(db.Carts.ToList());
 
-           
-            
+            //need to filter db.carts. only need to see current users cart
+
+
+            //var viewModel = new ShoppingCartViewModel
+            //{
+            //    CartItems = cart.GetCartItems(),
+            //    CartTotal = cart.GetTotal()
+            //};
+
+
         }
 
 
@@ -62,6 +71,22 @@ namespace TheVault.Controllers
             }
 
             return View(cart);
+        }
+
+        public ActionResult AddToCart(int? id)
+        {
+            //get current user 
+            //get the item using the id just passed in 
+            Cart cart = new Cart();
+            cart.ItemId = (int)id;
+            cart.UserID = User.Identity.GetUserId();
+            cart.Count = 1;
+            cart.DateCreated = DateTime.Now;
+            
+            db.Carts.Add(cart);
+            db.SaveChanges();
+
+            return View("index");
         }
 
         // GET: Carts/Edit/5
