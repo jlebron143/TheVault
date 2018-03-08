@@ -1,46 +1,30 @@
 ﻿@model TheVault.Models.Item
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Item - " + Model.Title;
 }
-
-<div>
-<h2>Item</h2>
-
-<hr />
-<dl class="dl-horizontal">
-    <dt>
-        @Html.DisplayNameFor(model => model.Category.Name)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.Category.Name)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(model => model.Title)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.Title)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(model => model.Price)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.Price)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(model => model.ItemArtUrl)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.ItemArtUrl)
-    </dd>
-
-</dl>
-
+<h2>@Model.Title</h2>
+<p>
+    <img alt="@Model.Title"
+         src="@Model.ItemArtUrl" />
+</p>
+<div id="item-details">
+    <p>
+        <em>Category:</em>
+        @Model.Category.Name
+    </p>
+    <p>
+        <em>Producer:</em>
+        @Model.Producer.Name
+    </p>
+    <p>
+        <em>Price:</em>
+        @String.Format("{0:F}",
+Model.Price)
+    </p>
+    <p class="button1">
+        @Html.ActionLink("Add to cart", "AddToCart",
+        "Cart", new { id = Model.ItemId }, "")
+    </p>
+    <div class="fb-comments"  data-width="230" data-numposts="5"></div>
 </div>

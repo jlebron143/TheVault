@@ -13,5 +13,6 @@ namespace TheVault.ViewModels
         [Key]
         public Cart Cart { get; set; }
         public Decimal CartTotal { get; set; }
+
     }
 }

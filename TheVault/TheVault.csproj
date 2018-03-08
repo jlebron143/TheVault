@@ -216,6 +216,7 @@
     <Compile Include="Configuration\PaymentSettings.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartsController.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
@@ -259,6 +260,10 @@
     <Compile Include="Migrations\201803062018453_removed vaultentities.cs" />
     <Compile Include="Migrations\201803062018453_removed vaultentities.Designer.cs">
       <DependentUpon>201803062018453_removed vaultentities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803082055308_changes to checkout and order.cs" />
+    <Compile Include="Migrations\201803082055308_changes to checkout and order.Designer.cs">
+      <DependentUpon>201803082055308_changes to checkout and order.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -380,6 +385,10 @@
     <Content Include="Views\Carts\Details.cshtml" />
     <Content Include="Views\Carts\Edit.cshtml" />
     <Content Include="Views\Carts\Index.cshtml" />
+    <Content Include="Views\Store\CategoryMenu.cshtml" />
+    <Content Include="Views\Carts\CartSummary.cshtml" />
+    <Content Include="Views\Checkout\AddressAndPayment.cshtml" />
+    <Content Include="Views\Checkout\Complete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -416,6 +425,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803062018453_removed vaultentities.resx">
       <DependentUpon>201803062018453_removed vaultentities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803082055308_changes to checkout and order.resx">
+      <DependentUpon>201803082055308_changes to checkout and order.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

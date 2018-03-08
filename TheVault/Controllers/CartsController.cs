@@ -7,18 +7,24 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TheVault.Models;
+using TheVault.ViewModels;
 
 namespace TheVault.Controllers
 {
     public class CartsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        string ShoppingCartId { get; set; }
 
         // GET: Carts
         public ActionResult Index()
         {
             return View(db.Carts.ToList());
+
+           
+            
         }
+
 
         // GET: Carts/Details/5
         public ActionResult Details(int? id)
@@ -114,6 +120,22 @@ namespace TheVault.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public void MigrateCart(string Email)
+        {
+
+            var shoppingCart = db.Carts.Where(
+                c => c.CartId == ShoppingCartId);
+            foreach (Cart item in shoppingCart)
+            {
+                item.CartId = Email;
+
+            }
+            db.SaveChanges();
+
+
+        }
+
 
         protected override void Dispose(bool disposing)
         {
