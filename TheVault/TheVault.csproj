@@ -219,6 +219,7 @@
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\StoreManagerController.cs" />
     <Compile Include="Controllers\VisitorsController.cs" />
@@ -265,6 +266,10 @@
     <Compile Include="Migrations\201803082055308_changes to checkout and order.Designer.cs">
       <DependentUpon>201803082055308_changes to checkout and order.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803092202107_added messages.cs" />
+    <Compile Include="Migrations\201803092202107_added messages.Designer.cs">
+      <DependentUpon>201803092202107_added messages.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -272,6 +277,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Producer.cs" />
@@ -284,6 +290,31 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\foamposite_ChineseNewYear.jpg" />
+    <Content Include="Content\Images\foamposite_galaxy.jpg" />
+    <Content Include="Content\Images\foamposite_GoneFishing.jpg" />
+    <Content Include="Content\Images\foamposite_paranorman.jpg" />
+    <Content Include="Content\Images\foamposite_Tianjin.jpg" />
+    <Content Include="Content\Images\question_Mid.jpg" />
+    <Content Include="Content\Images\reebok-question-draft-day.jpg" />
+    <Content Include="Content\Images\reebok-question-mid-crocus.jpg" />
+    <Content Include="Content\Images\Reebok-Question-Mid-Packer-Shoes-curtain-call-.jpg" />
+    <Content Include="Content\Images\Reebok-Teyana-Taylor1.jpg" />
+    <Content Include="Content\Images\Retro_11_bred.jpg" />
+    <Content Include="Content\Images\Retro_11_concordBred_space-jam.jpg" />
+    <Content Include="Content\Images\Retro_1_banned.jpg" />
+    <Content Include="Content\Images\Retro_3_OG_BlackCement.jpg" />
+    <Content Include="Content\Images\Retro_4_motorsport_away.jpg" />
+    <Content Include="Content\Images\UA-Curry2.jpg" />
+    <Content Include="Content\Images\UA_curry2_all_star.jpg" />
+    <Content Include="Content\Images\UA_Curry2_Surprise_Party.jpg" />
+    <Content Include="Content\Images\UA_curry4.jpg" />
+    <Content Include="Content\Images\UA_curry4_More_Magic.jpg" />
+    <Content Include="Content\Images\YeezyBoost_350_MoonRock.jpg" />
+    <Content Include="Content\Images\YeezyBoost_350_V2_Beluga_2.0_.jpg" />
+    <Content Include="Content\Images\YeezyBoost_350_V2_BlueTint.jpg" />
+    <Content Include="Content\Images\YeezyBoost_350_V2_PirateBlack.jpg" />
+    <Content Include="Content\Images\YeezyBoost_350_V2_Zebra.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -389,10 +420,14 @@
     <Content Include="Views\Carts\CartSummary.cshtml" />
     <Content Include="Views\Checkout\AddressAndPayment.cshtml" />
     <Content Include="Views\Checkout\Complete.cshtml" />
+    <Content Include="Views\Messages\Create.cshtml" />
+    <Content Include="Views\Messages\Delete.cshtml" />
+    <Content Include="Views\Messages\Details.cshtml" />
+    <Content Include="Views\Messages\Edit.cshtml" />
+    <Content Include="Views\Messages\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\TheVaultImages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -429,6 +464,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803082055308_changes to checkout and order.resx">
       <DependentUpon>201803082055308_changes to checkout and order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803092202107_added messages.resx">
+      <DependentUpon>201803092202107_added messages.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
