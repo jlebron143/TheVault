@@ -54,7 +54,7 @@
         </th>
         <th></th>
     </tr>
-    @*@foreach (var item in Model.Cart)
+    @*@*@*@*@foreach (var item in Model.Cart)
     {
         <tr id="row-@item.RecordId">
             <td>
@@ -76,8 +76,8 @@
             </td>
         </tr>
     }*@
-    @*<tr>
-        <td>
+    @*@*@*<tr>
+        @*<td>
             Total
         </td>
         <td></td>
@@ -85,5 +85,5 @@
         <td id="cart-total">
             @Model.CartTotal
         </td>
-    </tr>*@
-</table>
+    </tr>*@*@*@*@
+</table>*@*@*@
