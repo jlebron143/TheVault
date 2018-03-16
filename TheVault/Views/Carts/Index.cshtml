@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TheVault.Models.Cart>
+﻿@model  TheVault.ViewModels.ShoppingCartViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -54,18 +54,18 @@
         </th>
         <th></th>
     </tr>
-    foreach (var item in Model.Cart)
+    @foreach (var item in Model.CartItems)
     {
         <tr id="row-item.RecordId">
             <td>
-                Html.ActionLink(item.Item.Title,
+                @Html.ActionLink(item.Item.Title,
 "Details", "Store", new { id = item.ItemId }, null)
             </td>
             <td>
-                item.Item.Price
+               @item.Item.Price
             </td>
             <td id="item-count-item.RecordId">
-                item.Count
+               @item.Count
             </td>
             <td>
                 <a href="#" class="RemoveLink"
@@ -75,6 +75,7 @@
                 </a>
             </td>
         </tr>
+        }
     <tr>
         <td>
             Total
@@ -82,7 +83,7 @@
         <td></td>
         <td></td>
         <td id="cart-total">
-            Model.CartTotal
+            @Model.CartTotal
         </td>
     </tr>
 </table>

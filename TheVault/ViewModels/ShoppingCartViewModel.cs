@@ -11,7 +11,8 @@ namespace TheVault.ViewModels
     public class ShoppingCartViewModel
     {
         [Key]
-        public Cart Cart { get; set; }
+        //public Cart Cart { get; set; }
+        public List<Cart> CartItems { get; set; }
         public Decimal CartTotal { get; set; }
     }
 }

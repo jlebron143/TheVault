@@ -20,18 +20,21 @@ namespace TheVault.Controllers
         // GET: Carts
         public ActionResult Index()
         {
-            return View(db.Carts.ToList());
+           
+            var UserID = User.Identity.GetUserId();
 
             //need to filter db.carts. only need to see current users cart
 
 
-            //var viewModel = new ShoppingCartViewModel
-            //{
+            var viewModel = new ShoppingCartViewModel();
+            viewModel.CartItems = db.Carts.Include("Item").Where(m => m.UserID == UserID).ToList();
+            //{ I need to get all of this item totals , save 
+            // 
             //    CartItems = cart.GetCartItems(),
             //    CartTotal = cart.GetTotal()
             //};
 
-
+            return View(viewModel);
         }
 
 
@@ -79,6 +82,7 @@ namespace TheVault.Controllers
             //get the item using the id just passed in 
             Cart cart = new Cart();
             cart.ItemId = (int)id;
+            cart.Item = (from x in db.Items where x.ItemId == (int)id select x).First();
             cart.UserID = User.Identity.GetUserId();
             cart.Count = 1;
             cart.DateCreated = DateTime.Now;
@@ -86,7 +90,7 @@ namespace TheVault.Controllers
             db.Carts.Add(cart);
             db.SaveChanges();
 
-            return View("index");
+            return RedirectToAction("index");
         }
 
         // GET: Carts/Edit/5
