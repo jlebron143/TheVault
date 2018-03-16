@@ -93,6 +93,7 @@ namespace TheVault.Controllers
             return RedirectToAction("index");
         }
 
+       
         // GET: Carts/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -127,6 +128,7 @@ namespace TheVault.Controllers
         // GET: Carts/Delete/5
         public ActionResult Delete(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -150,6 +152,7 @@ namespace TheVault.Controllers
             return RedirectToAction("Index");
         }
 
+
         public void MigrateCart(string Email)
         {
 
@@ -161,9 +164,40 @@ namespace TheVault.Controllers
 
             }
             db.SaveChanges();
+         }
+        //public static Cart GetCart(HttpContextBase context)
+        //{
+        //    var shoppingCart = new Cart();
+        //    shoppingCart.CartId = shoppingCart.Get(context)
+        //    return shoppingCart;
 
+        //}
 
-        }
+        //public ActionResult RemoveFromCart(int id)
+        //{
+        //    var cartItem = db.Carts.Single(
+        //        Cart = Cart.CartId == )
+            
+        //    int itemCount = 0;
+
+        //    if (cartItem == null)
+        //    {
+        //        if (cartItem.Count > 1)
+        //        {
+        //            cartItem.Count--;
+        //            itemCount = cartItem.Count;
+        //        }
+        //        else
+        //        {
+        //            db.Carts.Remove(cartItem);
+        //        }
+
+        //        db.SaveChanges();
+
+        //        return RemoveFromCart;
+        //    }
+        //}
+
 
 
         protected override void Dispose(bool disposing)
