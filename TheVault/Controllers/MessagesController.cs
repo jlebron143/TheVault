@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TheVault.Models;
+using System.Net.Mail;
 
 namespace TheVault.Controllers
 {
@@ -43,7 +44,62 @@ namespace TheVault.Controllers
 
         // POST: Messages/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async System.Threading.Tasks.Task<ActionResult> Create([Bind(Include = "MessageID,Subject,Comment,YourName,EmailAddress,UserID")] Message message, int? id)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Messages.Add(message);
+        //        db.SaveChanges();
+
+        //        var post = from x in db.Messages
+        //                   where x.MessageID == message.MessageID
+        //                   select x.UserID;
+
+        //        var UserID = post.FirstOrDefault();
+
+        //        var email = (from x in db.Users
+        //                     where x.Id == UserID
+        //                     select x).FirstOrDefault().Email;
+
+        //        var body = "<p>Email From; {0} ({1})</p><p>Message:</p><p>{2}</p>";
+        //        var note = new MailMessage();
+        //        message.To.Add(new MailAddress(email));
+        //        message.From = new MailAddress("thevault.krj@gmail.com");
+        //        message.Subject = "A response from The Vault!";
+        //        message.Body = string.Format("You have received a response from The Vault in regards to your post. ");
+        //        message.IsBodyHtml = true;
+
+        //        using (var smtp = new SmtpClient())
+        //        {
+        //            {
+        //                UserName = "thevault.krj@gmail.com",
+        //                Password ="Thevault123$"
+        //            };
+        //            smtp.Credentials = credential;
+        //            smtp.Host = "smtp.gmail.com";
+        //            smtp.Port = 587;
+        //            smtp.EnableSsl = true;
+        //            await smtp.SendMailAsync(message);
+        //        }
+        //        TempData["Message"] = "Your comment has been saved and an email has been sent to the post creator.";
+        //        return RedirectToAction("Confirmation");
+        //    }
+        //    ViewBag.MessageId = new SelectList(db.Messages, "MessageId", "Title", message.MessageID);
+        //    return View(message);
+        //}
+
+
+        //            return RedirectToAction("Index");
+        //    }
+
+        //    return View(message);
+        //}
+
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MessageID,Subject,Comment,YourName,EmailAddress")] Message message)
@@ -72,7 +128,7 @@ namespace TheVault.Controllers
             }
             return View(message);
         }
-
+         
         // POST: Messages/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.

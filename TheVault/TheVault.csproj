@@ -270,6 +270,10 @@
     <Compile Include="Migrations\201803092202107_added messages.Designer.cs">
       <DependentUpon>201803092202107_added messages.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803160341541_Message added .cs" />
+    <Compile Include="Migrations\201803160341541_Message added .Designer.cs">
+      <DependentUpon>201803160341541_Message added .cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -467,6 +471,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803092202107_added messages.resx">
       <DependentUpon>201803092202107_added messages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803160341541_Message added .resx">
+      <DependentUpon>201803160341541_Message added .cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

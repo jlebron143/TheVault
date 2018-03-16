@@ -54,36 +54,35 @@
         </th>
         <th></th>
     </tr>
-    @*@*@*@*@foreach (var item in Model.Cart)
+    foreach (var item in Model.Cart)
     {
-        <tr id="row-@item.RecordId">
+        <tr id="row-item.RecordId">
             <td>
-                @Html.ActionLink(item.Item.Title,
+                Html.ActionLink(item.Item.Title,
 "Details", "Store", new { id = item.ItemId }, null)
             </td>
             <td>
-                @item.Item.Price
+                item.Item.Price
             </td>
-            <td id="item-count-@item.RecordId">
-                @item.Count
+            <td id="item-count-item.RecordId">
+                item.Count
             </td>
             <td>
                 <a href="#" class="RemoveLink"
-                   data-id="@item.RecordId">
+                   data-id="item.RecordId">
                     Remove
                     from cart
                 </a>
             </td>
         </tr>
-    }*@
-    @*@*@*<tr>
-        @*<td>
+    <tr>
+        <td>
             Total
         </td>
         <td></td>
         <td></td>
         <td id="cart-total">
-            @Model.CartTotal
+            Model.CartTotal
         </td>
-    </tr>*@*@*@*@
-</table>*@*@*@
+    </tr>
+</table>
