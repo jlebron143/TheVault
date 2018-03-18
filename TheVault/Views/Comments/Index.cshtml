@@ -12,13 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Post.Title)
+            @Html.DisplayNameFor(model => model.Message.Subject)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Message)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CommentDate)
+            @Html.DisplayNameFor(model => model.Note)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.UserID)
@@ -29,13 +26,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Post.Title)
+            @Html.DisplayFor(modelItem => item.Message.Subject)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Message)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CommentDate)
+            @Html.DisplayFor(modelItem => item.Note)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.UserID)

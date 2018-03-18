@@ -1,0 +1,12 @@
+﻿
+<div class="top-buffer">
+    <h2>Confirmation</h2>
+    @{
+        string message = TempData["Message"] as string;
+        if (message != null)
+        {
+            <div class="alert-message">@message</div>
+        }
+    }
+</div>
+

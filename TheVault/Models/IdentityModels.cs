@@ -46,6 +46,8 @@ namespace TheVault.Models
         public DbSet<OrderDetail> OrderDetails { get; set; }
 
         public System.Data.Entity.DbSet<TheVault.Models.Message> Messages { get; set; }
+
+        public System.Data.Entity.DbSet<TheVault.Models.Comment> Comments { get; set; }
         // public System.Data.Entity.DbSet<TheCategory> Producers { get; set; }
 
     }
