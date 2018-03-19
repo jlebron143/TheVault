@@ -165,38 +165,74 @@ namespace TheVault.Controllers
             }
             db.SaveChanges();
          }
-        //public static Cart GetCart(HttpContextBase context)
-        //{
-        //    var shoppingCart = new Cart();
-        //    shoppingCart.CartId = shoppingCart.Get(context)
-        //    return shoppingCart;
+       
 
+        public ActionResult RemoveFromCart(int id)
+        {
+            //Cart cart = new Cart();
+
+
+            //string itemName = db.Carts
+            //    .Single(item => item.RecordId == id).Item.Title;
+
+
+            //int itemCount = cart.RemoveFromCart(id);
+
+
+            //var results = new ShoppingCartRemoveViewModel
+            //{
+            //    Message = Server.HtmlEncode(itemName) +
+            //        " has been removed from your shopping cart.",
+            //    CartTotal = cart.GetTotal(),
+            //    CartCount = cart.GetCount(),
+            //    ItemCount = itemCount,
+            //    DeleteId = id
+            //return View(viewmodel);
+
+            Cart cart = new Cart();
+            cart.ItemId = (int)id;
+            cart.Item = (from x in db.Items where x.ItemId == (int)id select x).First();
+            cart.UserID = User.Identity.GetUserId();
+            cart.Count = 0;
+
+
+            cart.DateCreated = DateTime.Now;
+
+            db.Carts.Remove(cart);
+            db.SaveChanges();
+
+            return RedirectToAction("index");
+        }
+
+        //public int GetCount()
+        //{
+
+        //    int? count = (from cartItems in db.Carts
+        //                  where cartItems.CartId == ShoppingCartId
+        //                  select (int?)cartItems.Count).Sum();
+
+        //    return count ?? 0;
+        //}
+        //public decimal GetTotal()
+        //{
+
+        //    decimal? total = (from cartItems in db.Carts
+        //                      where cartItems.CartId == ShoppingCartId
+        //                      select (int?)cartItems.Count *
+        //                      cartItems.Item.Price).Sum();
+
+        //    return total ?? decimal.Zero;
         //}
 
-        //public ActionResult RemoveFromCart(int id)
+        //[ChildActionOnly]
+        //public ActionResult CartSummary()
         //{
-        //    var cartItem = db.Carts.Single(
-        //        Cart = Cart.CartId == )
-            
-        //    int itemCount = 0;
+        //    Cart cart = new Cart();
 
-        //    if (cartItem == null)
-        //    {
-        //        if (cartItem.Count > 1)
-        //        {
-        //            cartItem.Count--;
-        //            itemCount = cartItem.Count;
-        //        }
-        //        else
-        //        {
-        //            db.Carts.Remove(cartItem);
-        //        }
-
-        //        db.SaveChanges();
-
-        //        return RemoveFromCart;
-        //    }
+        //    ViewData["CartCount"] = cart.GetCount();
+        //    return PartialView("CartSummary");
         //}
+
 
 
 

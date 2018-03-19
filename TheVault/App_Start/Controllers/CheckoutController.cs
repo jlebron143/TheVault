@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Stripe;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -51,8 +52,31 @@ namespace TheVault.Controllers
                     return View(order);
                 }
             }
+        public ActionResult Charge(string stripeEmail, string stripeToken)
+        {
+            StripeConfiguration.SetApiKey("Stripe_Secret_Key");
+            var customers = new StripeCustomerService();
+            var charges = new StripeChargeService();
 
-            public ActionResult Complete(int id)
+            var customer = customers.Create(new StripeCustomerCreateOptions
+            {
+                Email = stripeEmail,
+                SourceToken = stripeToken
+            });
+
+            var charge = charges.Create(new StripeChargeCreateOptions
+            {
+                Amount = 500,
+                Description = "Sample Charge",
+                Currency = "usd",
+                CustomerId = customer.Id
+            });
+
+            return View();
+        }
+
+
+        public ActionResult Complete(int id)
             {
 
                 bool isValid = db.Orders.Any(
