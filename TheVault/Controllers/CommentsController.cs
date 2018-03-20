@@ -25,7 +25,7 @@ namespace TheVault.Controllers
             var comments = db.Comments.Include(c => c.Message);
             return View(comments.ToList());
         }
-
+        
         //public PartialViewResult_Details_Partial(int? id)
         //{
         //    if (id != null)

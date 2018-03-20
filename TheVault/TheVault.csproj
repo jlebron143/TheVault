@@ -214,16 +214,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Configuration\PaymentSettings.cs" />
-    <Compile Include="App_Start\Controllers\AccountController.cs" />
-    <Compile Include="App_Start\Controllers\CartsController.cs" />
-    <Compile Include="App_Start\Controllers\CheckoutController.cs" />
-    <Compile Include="App_Start\Controllers\CommentsController.cs" />
-    <Compile Include="App_Start\Controllers\HomeController.cs" />
-    <Compile Include="App_Start\Controllers\ManageController.cs" />
-    <Compile Include="App_Start\Controllers\MessagesController.cs" />
-    <Compile Include="App_Start\Controllers\StoreController.cs" />
-    <Compile Include="App_Start\Controllers\StoreManagerController.cs" />
-    <Compile Include="App_Start\Controllers\VisitorsController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartsController.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\StoreController.cs" />
+    <Compile Include="Controllers\StoreManagerController.cs" />
+    <Compile Include="Controllers\VisitorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -287,6 +287,10 @@
     <Compile Include="Migrations\201803180348377_changes to store view.Designer.cs">
       <DependentUpon>201803180348377_changes to store view.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803201858145_update image path.cs" />
+    <Compile Include="Migrations\201803201858145_update image path.Designer.cs">
+      <DependentUpon>201803201858145_update image path.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -310,31 +314,35 @@
     <Content Include="Content\bootstrap-lux.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Images\foamposite_ChineseNewYear.jpg" />
-    <Content Include="Content\Images\foamposite_galaxy.jpg" />
-    <Content Include="Content\Images\foamposite_GoneFishing.jpg" />
-    <Content Include="Content\Images\foamposite_paranorman.jpg" />
-    <Content Include="Content\Images\foamposite_Tianjin.jpg" />
-    <Content Include="Content\Images\question_Mid.jpg" />
-    <Content Include="Content\Images\reebok-question-draft-day.jpg" />
-    <Content Include="Content\Images\reebok-question-mid-crocus.jpg" />
-    <Content Include="Content\Images\Reebok-Question-Mid-Packer-Shoes-curtain-call-.jpg" />
-    <Content Include="Content\Images\Reebok-Teyana-Taylor1.jpg" />
-    <Content Include="Content\Images\Retro_11_bred.jpg" />
-    <Content Include="Content\Images\Retro_11_concordBred_space-jam.jpg" />
-    <Content Include="Content\Images\Retro_1_banned.jpg" />
-    <Content Include="Content\Images\Retro_3_OG_BlackCement.jpg" />
-    <Content Include="Content\Images\Retro_4_motorsport_away.jpg" />
-    <Content Include="Content\Images\UA-Curry2.jpg" />
-    <Content Include="Content\Images\UA_curry2_all_star.jpg" />
-    <Content Include="Content\Images\UA_Curry2_Surprise_Party.jpg" />
-    <Content Include="Content\Images\UA_curry4.jpg" />
-    <Content Include="Content\Images\UA_curry4_More_Magic.jpg" />
-    <Content Include="Content\Images\YeezyBoost_350_MoonRock.jpg" />
-    <Content Include="Content\Images\YeezyBoost_350_V2_Beluga_2.0_.jpg" />
-    <Content Include="Content\Images\YeezyBoost_350_V2_BlueTint.jpg" />
-    <Content Include="Content\Images\YeezyBoost_350_V2_PirateBlack.jpg" />
-    <Content Include="Content\Images\YeezyBoost_350_V2_Zebra.jpg" />
+    <Content Include="Content\foamposite_ChineseNewYear.jpg" />
+    <Content Include="Content\foamposite_galaxy.jpg" />
+    <Content Include="Content\foamposite_GoneFishing.jpg" />
+    <Content Include="Content\foamposite_paranorman.jpg" />
+    <Content Include="Content\foamposite_Tianjin.jpg" />
+    <Content Include="Content\question_Mid.jpg" />
+    <Content Include="Content\reebok-question-draft-day.jpg" />
+    <Content Include="Content\reebok-question-mid-crocus.jpg" />
+    <Content Include="Content\Reebok-Question-Mid-Packer-Shoes-curtain-call-.jpg" />
+    <Content Include="Content\Reebok-Teyana-Taylor1.jpg" />
+    <Content Include="Content\Reebok_Question_Mint_Glow.jpg" />
+    <Content Include="Content\Retro_10_Im_Back.jpg" />
+    <Content Include="Content\Retro_11_bred.jpg" />
+    <Content Include="Content\Retro_11_concordBred_space-jam.jpg" />
+    <Content Include="Content\Retro_1_banned.jpg" />
+    <Content Include="Content\Retro_1_Game_Royal.jpg" />
+    <Content Include="Content\Retro_3_OG_BlackCement.jpg" />
+    <Content Include="Content\Retro_3_Tinker.jpg" />
+    <Content Include="Content\Retro_4_motorsport_away.jpg" />
+    <Content Include="Content\UA-Curry2.jpg" />
+    <Content Include="Content\UA_curry2_all_star.jpg" />
+    <Content Include="Content\UA_Curry2_Surprise_Party.jpg" />
+    <Content Include="Content\UA_curry4.jpg" />
+    <Content Include="Content\UA_curry4_More_Magic.jpg" />
+    <Content Include="Content\YeezyBoost_350_MoonRock.jpg" />
+    <Content Include="Content\YeezyBoost_350_V2_Beluga_2.0_.jpg" />
+    <Content Include="Content\YeezyBoost_350_V2_BlueTint.jpg" />
+    <Content Include="Content\YeezyBoost_350_V2_PirateBlack.jpg" />
+    <Content Include="Content\YeezyBoost_350_V2_Zebra.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -358,6 +366,35 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Store\Images\Adidas_Yeezy_ PowerPhase_ Black 1.jpg" />
+    <Content Include="Views\Store\Images\foamposite_ChineseNewYear.jpg" />
+    <Content Include="Views\Store\Images\foamposite_galaxy.jpg" />
+    <Content Include="Views\Store\Images\foamposite_GoneFishing.jpg" />
+    <Content Include="Views\Store\Images\foamposite_paranorman.jpg" />
+    <Content Include="Views\Store\Images\foamposite_Tianjin.jpg" />
+    <Content Include="Views\Store\Images\question_Mid.jpg" />
+    <Content Include="Views\Store\Images\reebok-question-draft-day.jpg" />
+    <Content Include="Views\Store\Images\reebok-question-mid-crocus.jpg" />
+    <Content Include="Views\Store\Images\Reebok-Question-Mid-Packer-Shoes-curtain-call-.jpg" />
+    <Content Include="Views\Store\Images\Reebok-Teyana-Taylor1.jpg" />
+    <Content Include="Views\Store\Images\Reebok_Question_Mint_Glow.jpg" />
+    <Content Include="Views\Store\Images\Retro_10_Im_Back.jpg" />
+    <Content Include="Views\Store\Images\Retro_11_bred.jpg" />
+    <Content Include="Views\Store\Images\Retro_11_concordBred_space-jam.jpg" />
+    <Content Include="Views\Store\Images\Retro_1_banned.jpg" />
+    <Content Include="Views\Store\Images\Retro_1_Game_Royal.jpg" />
+    <Content Include="Views\Store\Images\Retro_3_OG_BlackCement.jpg" />
+    <Content Include="Views\Store\Images\Retro_3_Tinker.jpg" />
+    <Content Include="Views\Store\Images\Retro_4_motorsport_away.jpg" />
+    <Content Include="Views\Store\Images\UA-Curry2.jpg" />
+    <Content Include="Views\Store\Images\UA_curry2_all_star.jpg" />
+    <Content Include="Views\Store\Images\UA_Curry2_Surprise_Party.jpg" />
+    <Content Include="Views\Store\Images\UA_curry4.jpg" />
+    <Content Include="Views\Store\Images\UA_curry4_More_Magic.jpg" />
+    <Content Include="Views\Store\Images\YeezyBoost_350_MoonRock.jpg" />
+    <Content Include="Views\Store\Images\YeezyBoost_350_V2_Beluga_2.0_.jpg" />
+    <Content Include="Views\Store\Images\YeezyBoost_350_V2_PirateBlack.jpg" />
+    <Content Include="Views\Store\Images\YeezyBoost_350_V2_Zebra.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -499,6 +536,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803180348377_changes to store view.resx">
       <DependentUpon>201803180348377_changes to store view.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803201858145_update image path.resx">
+      <DependentUpon>201803201858145_update image path.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
