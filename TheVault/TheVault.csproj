@@ -291,6 +291,14 @@
     <Compile Include="Migrations\201803201858145_update image path.Designer.cs">
       <DependentUpon>201803201858145_update image path.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803232103337_update to storemanager.cs" />
+    <Compile Include="Migrations\201803232103337_update to storemanager.Designer.cs">
+      <DependentUpon>201803232103337_update to storemanager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803232226105_ added recipientID.cs" />
+    <Compile Include="Migrations\201803232226105_ added recipientID.Designer.cs">
+      <DependentUpon>201803232226105_ added recipientID.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -535,6 +543,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803201858145_update image path.resx">
       <DependentUpon>201803201858145_update image path.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803232103337_update to storemanager.resx">
+      <DependentUpon>201803232103337_update to storemanager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803232226105_ added recipientID.resx">
+      <DependentUpon>201803232226105_ added recipientID.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

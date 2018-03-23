@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -64,20 +65,27 @@ namespace TheVault.Controllers
         {
             if (ModelState.IsValid)
             {
+               
+                var currentUserId = User.Identity.GetUserId();
+
+                comment.UserID = currentUserId;
+
                 comment.MessageID = (int)id;
                 db.Comments.Add(comment);
                 db.SaveChanges();
 
-                var Message = from x in db.Messages
+                var message = (from x in db.Messages
                               where x.MessageID == comment.MessageID
-                              select x.UserID;
+                              select x).FirstOrDefault();
+
+                message.RecipientID = currentUserId;
 
                 //I have the user ID
 
-                var UserID = Message.FirstOrDefault();
+                // userID is null , look to fix 
 
                 var email = (from x in db.Users
-                             where x.Id == UserID
+                             where x.Id == currentUserId
                              select x).FirstOrDefault().Email;
 
 

@@ -20,6 +20,7 @@ namespace TheVault.Models
         public string YourName { get; set; }
         public string EmailAddress { get; set; }
         public string UserID { get; set; }
+        public string RecipientID { get; set; }
 
 
     }

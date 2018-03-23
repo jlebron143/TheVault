@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using TheVault.Models;
 using System.Net.Mail;
+using Microsoft.AspNet.Identity;
 
 namespace TheVault.Controllers
 {
@@ -18,7 +19,9 @@ namespace TheVault.Controllers
         // GET: Messages
         public ActionResult Index()
         {
-            return View(db.Messages.ToList());
+            //query the message table for all messages where recipentID = currently logged in user
+            var userId = User.Identity.GetUserId();
+            return View(db.Messages.Where(a => a.RecipientID == userId).ToList());
         }
 
         // GET: Messages/Details/5

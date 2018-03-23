@@ -165,10 +165,32 @@ namespace TheVault.Controllers
             }
             db.SaveChanges();
          }
-       
+
 
         public ActionResult RemoveFromCart(int id)
         {
+            var cartItem = db.Carts.Single(
+              cart => cart.CartId == ShoppingCartId
+              && cart.RecordId == id);
+
+            int itemCount = 0;
+
+            if (cartItem != null)
+            {
+                if (cartItem.Count > 1)
+                {
+                    cartItem.Count--;
+                    itemCount = cartItem.Count;
+                }
+                else
+                {
+                    db.Carts.Remove(cartItem);
+                }
+
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        
             //Cart cart = new Cart();
 
 
@@ -189,40 +211,58 @@ namespace TheVault.Controllers
             //    DeleteId = id
             //return View(viewmodel);
 
-            Cart cart = new Cart();
-            cart.ItemId = (int)id;
-            cart.Item = (from x in db.Items where x.ItemId == (int)id select x).First();
-            cart.UserID = User.Identity.GetUserId();
-            cart.Count = 0;
+            //Cart cart = new Cart();
+            //cart.ItemId = (int)id;
+            //cart.Item = (from x in db.Items where x.ItemId == (int)id select x).First();
+            //cart.UserID = User.Identity.GetUserId();
+            //cart.Count = 0;
 
 
-            cart.DateCreated = DateTime.Now;
+            //cart.DateCreated = DateTime.Now;
 
-            db.Carts.Remove(cart);
+            //db.Carts.Remove(cart);
+            //db.SaveChanges();
+
+            //return RedirectToAction("index");
+        }
+        public void EmptyCart()
+        {
+            var cartItems = db.Carts.Where(
+                cart => cart.CartId == ShoppingCartId);
+
+            foreach (var cartItem in cartItems)
+            {
+                db.Carts.Remove(cartItem);
+            }
+
             db.SaveChanges();
-
-            return RedirectToAction("index");
+        }
+        public List<Cart> GetCartItems()
+        {
+            return db.Carts.Where(
+                cart => cart.CartId == ShoppingCartId).ToList();
         }
 
-        //public int GetCount()
-        //{
 
-        //    int? count = (from cartItems in db.Carts
-        //                  where cartItems.CartId == ShoppingCartId
-        //                  select (int?)cartItems.Count).Sum();
+        public int GetCount()
+        {
 
-        //    return count ?? 0;
-        //}
-        //public decimal GetTotal()
-        //{
+            int? count = (from cartItems in db.Carts
+                          where cartItems.CartId == ShoppingCartId
+                          select (int?)cartItems.Count).Sum();
 
-        //    decimal? total = (from cartItems in db.Carts
-        //                      where cartItems.CartId == ShoppingCartId
-        //                      select (int?)cartItems.Count *
-        //                      cartItems.Item.Price).Sum();
+            return count ?? 0;
+        }
+        public decimal GetTotal()
+        {
 
-        //    return total ?? decimal.Zero;
-        //}
+            decimal? total = (from cartItems in db.Carts
+                              where cartItems.CartId == ShoppingCartId
+                              select (int?)cartItems.Count *
+                              cartItems.Item.Price).Sum();
+
+            return total ?? decimal.Zero;
+        }
 
         //[ChildActionOnly]
         //public ActionResult CartSummary()
