@@ -44,7 +44,14 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MessageID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="top-buffer">
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.MessageID }) |
+    @Html.ActionLink("Back to List", "Index")*@
+    <a href="@Url.Action("Index", "Comments", new { id = Model.MessageID})" class="btn btn-primary">Get Comments</a>
+    <a href="@Url.Action("Create","Comments", new { id = Model.MessageID})" class="btn btn-primary">Add Comment</a>
+    <a href="@Url.Action("Index", "Messages")" class="btn btn-primary">Back to List</a>
+</div>
+
+
+

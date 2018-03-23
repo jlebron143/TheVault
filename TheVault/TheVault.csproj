@@ -445,11 +445,6 @@
     <Content Include="Views\Visitors\Details.cshtml" />
     <Content Include="Views\Visitors\Edit.cshtml" />
     <Content Include="Views\Visitors\Index.cshtml" />
-    <Content Include="Views\Posts\Create.cshtml" />
-    <Content Include="Views\Posts\Delete.cshtml" />
-    <Content Include="Views\Posts\Details.cshtml" />
-    <Content Include="Views\Posts\Edit.cshtml" />
-    <Content Include="Views\Posts\Index.cshtml" />
     <Content Include="Views\Comments\Create.cshtml" />
     <Content Include="Views\Comments\Delete.cshtml" />
     <Content Include="Views\Comments\Details.cshtml" />

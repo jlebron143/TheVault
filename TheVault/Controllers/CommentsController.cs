@@ -25,7 +25,7 @@ namespace TheVault.Controllers
             var comments = db.Comments.Include(c => c.Message);
             return View(comments.ToList());
         }
-        
+
         //public PartialViewResult_Details_Partial(int? id)
         //{
         //    if (id != null)
@@ -91,11 +91,13 @@ namespace TheVault.Controllers
 
                 using (var smtp = new SmtpClient())
                 {
-                    //{
-                    //    UserName = "thevault.krj@gmail.com";
-                    //    Password = "Thevault123$";
-                    //};
-                    smtp.Credentials = new System.Net.NetworkCredential("thevault.krj@gmail.com", "thevault123$");
+                    var credential = new NetworkCredential
+                    {
+                        UserName = "thevault.krj@gmail.com",
+                        Password = "Thevault123$",
+                };
+                    //smtp.Credentials = new System.Net.NetworkCredential("thevault.krj@gmail.com", "thevault123$");
+                    smtp.Credentials = credential;
                     smtp.Host = "smtp.gmail.com";
                     smtp.Port = 587;
                     smtp.EnableSsl = true;
