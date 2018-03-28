@@ -68,11 +68,11 @@
                @item.Count
             </td>
             <td>
-                <a href="#" class="RemoveLink"
-                   data-id="item.RecordId">
-                    Remove
-                    from cart
-                </a>
+                <p class="button1">
+                    @Html.ActionLink("Remove From Cart", "RemoveFromCart",
+        "Carts", new { id = item.RecordId }, "")
+                </p>
+               
             </td>
         </tr>
         }

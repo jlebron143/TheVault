@@ -27,13 +27,13 @@ namespace TheVault.Controllers
 
                 try
                 {
-                    if (string.Equals(values["PromoCode"], PromoCode,
-                        StringComparison.OrdinalIgnoreCase) == false)
-                    {
-                        return View(order);
-                    }
-                    else
-                    {
+                    //if (string.Equals(values["PromoCode"], PromoCode,
+                    //    StringComparison.OrdinalIgnoreCase) == false)
+                    //{
+                    //    return View(order);
+                    //}
+                    //else
+                    //{
                         order.Username = User.Identity.Name;
                         order.OrderDate = DateTime.Now;
 
@@ -44,7 +44,7 @@ namespace TheVault.Controllers
 
                         return RedirectToAction("Complete",
                             new { id = order.OrderId });
-                    }
+                    //}
                 }
                 catch
                 {
@@ -72,7 +72,7 @@ namespace TheVault.Controllers
                 CustomerId = customer.Id
             });
 
-            return View();
+            return RedirectToAction("Complete");
         }
 
 

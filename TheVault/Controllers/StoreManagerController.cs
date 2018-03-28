@@ -10,7 +10,7 @@ using TheVault.Models;
 
 namespace TheVault.Controllers
 {
-    [Authorize(Users ="jlebron143@gmail.com")]
+    [Authorize(Users ="thevault_krj@gmail.com")]
     public class StoreManagerController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -41,6 +41,8 @@ namespace TheVault.Controllers
         public ActionResult Create()
         {
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryID", "Name");
+            ViewBag.ProducerId = new SelectList(db.Producers, "ProducerID", "Name");
+
             return View();
         }
 
@@ -49,7 +51,7 @@ namespace TheVault.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ItemId,CategoryId,Title,Price,ItemArtUrl")] Item item)
+        public ActionResult Create([Bind(Include = "ItemId,CategoryId,ProducerId,Title,Price,ItemArtUrl")] Item item)
         {
             if (ModelState.IsValid)
             {
@@ -59,6 +61,8 @@ namespace TheVault.Controllers
             }
 
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryID", "Name", item.CategoryId);
+            ViewBag.ProducerId = new SelectList(db.Producers, "ProducerID", "Name", item.ProducerId);
+
             return View(item);
         }
 
@@ -75,6 +79,8 @@ namespace TheVault.Controllers
                 return HttpNotFound();
             }
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryID", "Name", item.CategoryId);
+            ViewBag.ProducerId = new SelectList(db.Producers, "ProducerID", "Name", item.ProducerId);
+
             return View(item);
         }
 
@@ -92,6 +98,8 @@ namespace TheVault.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryID", "Name", item.CategoryId);
+            ViewBag.ProducerId = new SelectList(db.Producers, "ProducerID", "Name", item.ProducerId);
+
             return View(item);
         }
 

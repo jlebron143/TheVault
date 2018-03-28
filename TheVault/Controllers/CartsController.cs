@@ -28,8 +28,10 @@ namespace TheVault.Controllers
 
             var viewModel = new ShoppingCartViewModel();
             viewModel.CartItems = db.Carts.Include("Item").Where(m => m.UserID == UserID).ToList();
+            viewModel.CartTotal = 0;
+            
             //{ I need to get all of this item totals , save 
-            // 
+            //  try for loop for total, over the length of CartItems 
             //    CartItems = cart.GetCartItems(),
             //    CartTotal = cart.GetTotal()
             //};
@@ -169,28 +171,28 @@ namespace TheVault.Controllers
 
         public ActionResult RemoveFromCart(int id)
         {
-            var cartItem = db.Carts.Single(
-              cart => cart.CartId == ShoppingCartId
-              && cart.RecordId == id);
+            //var cartItem = db.Carts.Single(
+            //  cart => cart.CartId == ShoppingCartId
+            //  && cart.RecordId == id);
 
-            int itemCount = 0;
+            //int itemCount = 0;
 
-            if (cartItem != null)
-            {
-                if (cartItem.Count > 1)
-                {
-                    cartItem.Count--;
-                    itemCount = cartItem.Count;
-                }
-                else
-                {
-                    db.Carts.Remove(cartItem);
-                }
+            //if (cartItem != null)
+            //{
+            //    if (cartItem.Count > 1)
+            //    {
+            //        cartItem.Count--;
+            //        itemCount = cartItem.Count;
+            //    }
+            //    else
+            //    {
+            //        db.Carts.Remove(cartItem);
+            //    }
 
-                db.SaveChanges();
-            }
-            return RedirectToAction("Index");
-        
+            //    db.SaveChanges();
+            //}
+            //return itemCount;
+
             //Cart cart = new Cart();
 
 
@@ -211,6 +213,7 @@ namespace TheVault.Controllers
             //    DeleteId = id
             //return View(viewmodel);
 
+            ////////////////////////////
             //Cart cart = new Cart();
             //cart.ItemId = (int)id;
             //cart.Item = (from x in db.Items where x.ItemId == (int)id select x).First();
@@ -219,11 +222,14 @@ namespace TheVault.Controllers
 
 
             //cart.DateCreated = DateTime.Now;
+            ////////////////////////////
 
-            //db.Carts.Remove(cart);
-            //db.SaveChanges();
+            var cart = db.Carts.Where(c => c.RecordId == id).FirstOrDefault();
 
-            //return RedirectToAction("index");
+            db.Carts.Remove(cart);
+            db.SaveChanges();
+
+            return RedirectToAction("index");
         }
         public void EmptyCart()
         {
