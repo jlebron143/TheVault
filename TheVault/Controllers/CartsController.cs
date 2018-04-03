@@ -29,6 +29,9 @@ namespace TheVault.Controllers
             var viewModel = new ShoppingCartViewModel();
             viewModel.CartItems = db.Carts.Include("Item").Where(m => m.UserID == UserID).ToList();
             viewModel.CartTotal = 0;
+
+
+
             
             //{ I need to get all of this item totals , save 
             //  try for loop for total, over the length of CartItems 

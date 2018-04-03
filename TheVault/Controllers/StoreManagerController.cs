@@ -10,7 +10,7 @@ using TheVault.Models;
 
 namespace TheVault.Controllers
 {
-    [Authorize(Users ="thevault_krj@gmail.com")]
+    [Authorize(Users ="jlebron143@gmail.com")]
     public class StoreManagerController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
